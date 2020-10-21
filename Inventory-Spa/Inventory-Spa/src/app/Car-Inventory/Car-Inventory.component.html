@@ -1,0 +1,58 @@
+<form [ngFormModel]="inventoryForm">  
+  <div class="form-group" [ngClass]="{ 'has-error' : !CarName.valid }">  
+      <label class="control-label" for="firstName">Car Name</label>  
+      <em *ngIf="!CarName.valid">*</em>  
+      <input id="CarName" type="text"   
+class="form-control"   
+placeholder="CarName" [ngFormControl]="CarName">  
+      </div>  
+      <div class="form-group" [ngClass]="{ 'has-error' : !Model.valid }">  
+          <label class="control-label" for="email">Email</label>  
+          <em *ngIf="!Model.valid">*</em>  
+          <input id="Model" type="Model"   
+class="form-control"   
+placeholder="Model" [ngFormControl]="Model">  
+          </div>  
+          <div class="form-group">  
+              <label class="control-label" for="StockQty">StockQty</label>  
+              <input id="StockQty" type="text" class="form-control" placeholder="Phone" [ngFormControl]="StockQty">  
+              </div>  
+              <div class="form-group">  
+                  <button type="submit" class="btn btn-danger" (click)="reset()">Reset</button>  
+                  <button type="submit" class="btn btn-primary" (click)="saveInventory(inventory.value)" ></button> 
+
+              </div>  
+          </form>  
+        </br>
+
+        <div class="container" style="text-align:center">
+          <br />
+          <h1>Inventory List</h1>
+        
+          <head>
+            <style>
+              table,
+              th,
+              td {
+                border: 1px solid black;
+                align: center;
+              }
+            </style>
+          </head>
+          <body>
+            <table style="width:50%" align="center">
+              <tr>
+                <th *ngFor="let col of displayedColumns">
+                  {{ col }}
+                </th>
+              </tr>
+              <tr *ngFor="let item of inventoryList">
+                <td>{{ item.CarName }}</td>
+                <td>{{ item.Model }}</td>
+                <td>{{ item.StockQty }}</td>
+              </tr>
+        
+              <tr></tr>
+            </table>
+          </body>
+        </div>
